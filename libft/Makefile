@@ -20,10 +20,10 @@ OBJS    = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME):$(OBJS) $(HEAD)
-		$(AR) $(NAME) $?
+		@$(AR) $(NAME) $?
 
 %.o : %.c $(HEAD)
-		$(CC) $(CFLAGS)  -c $< -o $@
+		@$(CC) $(CFLAGS)  -c $< -o $@
 
 clean:
 		rm -f $(OBJS)

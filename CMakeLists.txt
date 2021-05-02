@@ -7,7 +7,7 @@ include_directories(includes)
 include_directories(libft)
 
 add_executable(ft_printf
-        includes/ft_printf.h
+        ft_printf.h
         libft/ft_atoi.c
         libft/ft_bzero.c
         libft/ft_calloc.c
@@ -55,5 +55,5 @@ add_executable(ft_printf
         libft/ft_tolower.c
         libft/ft_toupper.c
         libft/libft.h
-        source/ft_printf.c
+        ft_printf.c
         main.c)

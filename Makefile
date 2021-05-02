@@ -3,29 +3,37 @@ CFLAGS = -Wall -Wextra -Werror -c
 AR      = ar rcs
 
 NAME = libftprintf.a
-SRCS=./libft/ft*.c ./source/ft*.c
-
-OBJECTS=ft*.o
+LIBFT = libft/libft.a
 LIB_PATH = ./libft
-INCLUDES=./includes
 
-all:$(NAME)
+SRCS = ft_printf.c
 
-$(NAME):
-	make re -C $(LIB_PATH)
-	$(CC) -g3 $(CFLAGS) $(SRCS) -I$(INCLUDES)
-	$(AR) $(NAME) $(OBJECTS) $(LIB_PATH)/*.o
+OBJECTS = $(SRCS:.c=.o)
+HEADER = ft_printf.h
+
+all:	makelibft $(NAME)
+
+$(NAME): $(OBJECTS) $(LIBFT) $(HEADER)
+	@cp $(LIBFT) $(NAME)
+	@$(AR) $(NAME) $(OBJECTS)
+
+%.o:	%.c $(HEADER)
+		@$(CC) $(CFLAGS) $< -o $@
+
+makelibft:
+		@$(MAKE) -C $(LIB_PATH)
 
 clean:
-	rm -f $(OBJECTS)
+	rm -f *.o
 	make clean -C $(LIB_PATH)
 
 fclean: clean
+	rm -f $(LIBFT)
 	rm -f $(NAME)
 
 re: fclean all
 
 run: all
-	$(CC) -static main.c -Lftprintf -o runprintf
+	@$(CC) main.c -L. -lftprintf -o runprintf && ./runprintf
 
 .PHONY:	all clean fclean re
