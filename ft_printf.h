@@ -12,7 +12,7 @@ typedef	struct		s_flags
 	int				width;
 	int				minus;
 	int				zero;
-	int				dot;
+	int				precision;
 	int				star;
 }					t_flags;
 

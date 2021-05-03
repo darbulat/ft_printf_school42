@@ -39,3 +39,24 @@ char	*ft_itoa(int n)
 	str[j] = 0;
 	return (str);
 }
+
+char	*ft_unsigned_itoa(unsigned int un)
+{
+	char		*str;
+	int			i;
+	int			j;
+
+	j = 0;
+	str = malloc(12 * sizeof(*str));
+	if (0 == str)
+		return (0);
+	i = ft_get_rank(un);
+	while (i)
+	{
+		str[j++] = (char)(un / i + '0');
+		un %= i;
+		i /= 10;
+	}
+	str[j] = 0;
+	return (str);
+}
