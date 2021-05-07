@@ -52,7 +52,6 @@ char	*ft_itoa(int n);
 char	*ft_unsigned_itoa(unsigned int un);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_putchar_fd(char c, int fd);
-void	ft_putnchar(char c, int i);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
@@ -69,5 +68,13 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+/*
+ * Additional
+ */
+char	*ft_strrev(char *s);
+int		ft_putnchar(char c, int i);
+char	*ft_itoa_base(int value, int base);
+int		ft_lower(int c);
 
 #endif

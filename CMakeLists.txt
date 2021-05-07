@@ -56,4 +56,7 @@ add_executable(ft_printf
         libft/ft_toupper.c
         libft/libft.h
         ft_printf.c
-        main.c)
+        main.c
+        ft_parse_flags.c
+        ft_print_char.c
+        ft_print_int.c)
