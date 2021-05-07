@@ -6,7 +6,7 @@ NAME = libftprintf.a
 LIBFT = libft/libft.a
 LIB_PATH = ./libft
 
-SRCS = ft_printf.c ft_print_int.c ft_print_char.c ft_parse_flags.c
+SRCS = ft_printf.c ft_print_int.c ft_print_char.c ft_parse_flags.c ft_print_x.c
 
 OBJECTS = $(SRCS:.c=.o)
 HEADER = ft_printf.h
@@ -18,7 +18,7 @@ $(NAME): $(OBJECTS) $(LIBFT) $(HEADER)
 	@$(AR) $(NAME) $(OBJECTS)
 
 %.o:	%.c $(HEADER)
-		@$(CC) $(CFLAGS) $< -o $@
+		$(CC) $(CFLAGS) $< -o $@
 
 makelibft:
 		@$(MAKE) -C $(LIB_PATH)

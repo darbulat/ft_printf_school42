@@ -74,7 +74,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
  */
 char	*ft_strrev(char *s);
 int		ft_putnchar(char c, int i);
-char	*ft_itoa_base(int value, int base);
-int		ft_lower(int c);
+char	*ft_itoa_base(unsigned int value, int base, int is_lower);
+char	*ft_strtolower(char *str);
 
 #endif

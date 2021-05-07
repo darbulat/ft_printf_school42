@@ -59,4 +59,5 @@ add_executable(ft_printf
         main.c
         ft_parse_flags.c
         ft_print_char.c
-        ft_print_int.c)
+        ft_print_int.c
+        ft_print_x.c)

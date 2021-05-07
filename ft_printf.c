@@ -13,10 +13,10 @@ int	ft_print_arg(va_list ap, t_flags flags)
 		i += ft_print_int(va_arg(ap, int), flags);
 	if (flags.type == 'u')
 		i += ft_print_unsigned(va_arg(ap, int), flags);
-//	if (flags.type == 'x')
-//		i += ft_print_x(va_arg(ap, unsigned int), flags, 1);
-//	if (flags.type == 'x')
-//		i += ft_print_x(va_arg(ap, unsigned int), flags, 0);
+	if (flags.type == 'X')
+		i += ft_print_x(va_arg(ap, unsigned int), 0, flags);
+	if (flags.type == 'x')
+		i += ft_print_x(va_arg(ap, unsigned int), 1, flags);
 	if (flags.type == '%')
 		i += ft_putnchar('%', 1);
 	return (i);
