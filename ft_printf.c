@@ -1,5 +1,14 @@
 #include "ft_printf.h"
 
+t_flags	ft_norm_flags(t_flags flags)
+{
+	if (flags.minus && flags.zero)
+		flags.zero = 0;
+	if (flags.zero && flags.precision == -1)
+		flags.precision = flags.width - 1;
+	return (flags);
+}
+
 int	ft_print_arg(va_list ap, t_flags flags)
 {
 	int		i;

@@ -12,7 +12,7 @@ static int	ft_get_rank(unsigned int un)
 	return (i);
 }
 
-static size_t	ft_get_length(long int n, int base)
+static size_t	ft_get_length(unsigned long long n, int base)
 {
 	int	len;
 

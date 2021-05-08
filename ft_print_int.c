@@ -85,15 +85,14 @@ int	ft_print_int(int nbr, t_flags flags)
 		return (ft_print_unsigned(nbr, flags));
 	str = ft_itoa(nbr);
 	len = ft_strlen(str);
-	if (flags.minus && flags.zero)
-		flags.zero = 0;
+	flags = ft_norm_flags(flags);
 	if (helper(flags, len))
 	{
 		flags.precision = len;
-		return (ft_print_str(str, flags));
+		i += ft_print_str(str, flags);
+		free(str);
+		return (i);
 	}
-	if (flags.zero && flags.precision == -1)
-		flags.precision = flags.width - 1;
 	if (flags.minus == 1)
 		i += print_str(str, flags);
 	i += ft_putnchar(' ', flags.width - flags.precision - 1);

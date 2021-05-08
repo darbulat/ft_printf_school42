@@ -26,6 +26,8 @@ int	ft_print_x(unsigned int unbr, int is_lower, t_flags flags)
 	if (flags.precision == 0 && unbr == 0)
 		return (ft_putnchar(' ', flags.width));
 	str = ft_itoa_base(unbr, 16, is_lower);
+	if (flags.zero && flags.minus)
+		flags.zero = 0;
 	if (flags.minus)
 		i += ft_print_with_0(str, flags);
 	if (flags.precision != -1)

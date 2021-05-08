@@ -1,6 +1,5 @@
 #include "ft_printf.h"
 
-
 static int	print_with_0(t_flags flags)
 {
 	int	i;
@@ -30,7 +29,7 @@ static int	print_string(t_flags flags)
 	return (i);
 }
 
-int ft_print_percent(t_flags flags)
+int	ft_print_percent(t_flags flags)
 {
 	int	i;
 
