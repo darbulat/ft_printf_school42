@@ -33,7 +33,4 @@ fclean: clean
 
 re: fclean all
 
-run: all
-	@$(CC) main.c -L. -lftprintf -o runprintf && ./runprintf
-
 .PHONY:	all clean fclean re
