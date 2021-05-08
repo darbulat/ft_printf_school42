@@ -40,7 +40,38 @@ int	ft_print_unsigned(unsigned int unbr, t_flags flags)
 	if (flags.minus == 0)
 		i += print_str(str, flags);
 	free(str);
-	return (len + i);
+	return (i);
+}
+
+int	helper(t_flags flags, int len)
+{
+	return ((flags.precision < len && flags.precision > -1) || (flags.precision
+			< len && flags.zero == 0) || (flags.zero && flags.width
+			<= len && flags.precision == -1));
+}
+
+static int	ft_print_str(char *str, t_flags flags)
+{
+	int		i;
+	int		len;
+
+	i = 0;
+	if (!str && flags.precision < 6 && flags.precision > -1)
+		str = "";
+	else if (!str)
+		str = "(null)";
+	len = ft_strlen(str);
+	if (flags.precision == -1)
+		flags.precision = len;
+	if (flags.precision > len)
+		flags.precision = len;
+	if (flags.minus == 1)
+		write(1, str, flags.precision);
+	while (i < flags.width - flags.precision)
+		i += ft_putnchar(' ', 1);
+	if (flags.minus == 0)
+		write(1, str, flags.precision);
+	return (flags.precision + i);
 }
 
 int	ft_print_int(int nbr, t_flags flags)
@@ -54,12 +85,12 @@ int	ft_print_int(int nbr, t_flags flags)
 		return (ft_print_unsigned(nbr, flags));
 	str = ft_itoa(nbr);
 	len = ft_strlen(str);
-	if ((flags.precision < len && flags.precision > -1) || (flags.precision
-			< len && flags.zero == 0) || (flags.zero && flags.width
-			<= len && flags.precision == -1))
+	if (flags.minus && flags.zero)
+		flags.zero = 0;
+	if (helper(flags, len))
 	{
 		flags.precision = len;
-		return (ft_print_string(str, flags));
+		return (ft_print_str(str, flags));
 	}
 	if (flags.zero && flags.precision == -1)
 		flags.precision = flags.width - 1;

@@ -6,7 +6,7 @@ NAME = libftprintf.a
 LIBFT = libft/libft.a
 LIB_PATH = ./libft
 
-SRCS = ft_printf.c ft_print_int.c ft_print_char.c ft_parse_flags.c ft_print_x.c
+SRCS = ft_printf.c ft_print_int.c ft_print_char.c ft_parse_flags.c ft_print_x.c ft_print_p.c ft_print_percent.c
 
 OBJECTS = $(SRCS:.c=.o)
 HEADER = ft_printf.h

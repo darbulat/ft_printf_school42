@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.19)
+cmake_minimum_required(VERSION 3.17)
 project(ft_printf C)
 
 set(CMAKE_C_STANDARD 11)
@@ -60,4 +60,6 @@ add_executable(ft_printf
         ft_parse_flags.c
         ft_print_char.c
         ft_print_int.c
-        ft_print_x.c)
+        ft_print_x.c
+        ft_print_p.c
+        ft_print_percent.c)

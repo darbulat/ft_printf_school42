@@ -20,20 +20,22 @@ int	ft_print_string(char *str, t_flags flags)
 	int		len;
 
 	i = 0;
-	if (!str && flags.precision < 6 && flags.precision > -1)
-		str = "";
-	else if (!str)
+	if (!str)
 		str = "(null)";
 	len = ft_strlen(str);
+	if (flags.minus && flags.zero)
+		flags.zero = 0;
 	if (flags.precision == -1)
 		flags.precision = len;
 	if (flags.precision > len)
 		flags.precision = len;
 	if (flags.minus == 1)
-		write(1, str, flags.precision);
-	while (i < flags.width - flags.precision)
-		i += ft_putnchar(' ', 1);
+		i += write(1, str, flags.precision);
+	if (flags.zero)
+		i += ft_putnchar('0', flags.width - flags.precision);
+	else
+		i += ft_putnchar(' ', flags.width - flags.precision);
 	if (flags.minus == 0)
-		write(1, str, flags.precision);
-	return (flags.precision + i);
+		i += write(1, str, flags.precision);
+	return (i);
 }

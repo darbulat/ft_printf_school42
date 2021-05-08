@@ -81,7 +81,7 @@ char	*ft_unsigned_itoa(unsigned int un)
 	return (str);
 }
 
-char	*ft_itoa_base(unsigned int value, int base, int is_lower)
+char	*ft_itoa_base(unsigned long long value, int base, int is_lower)
 {
 	char	*str;
 	int		count;
