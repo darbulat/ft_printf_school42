@@ -1,5 +1,18 @@
 #include "ft_printf.h"
 
+
+int	ft_print_with_0(char *str, t_flags flags)
+{
+	int	i;
+
+	i = 0;
+	i += ft_putnchar('0', flags.precision - (int)ft_strlen(str));
+	if (flags.precision > (int)ft_strlen(str))
+		flags.precision = ft_strlen(str);
+	i += write(1, str, flags.precision);
+	return (i);
+}
+
 int	ft_print_char(char c, t_flags flags)
 {
 	int		i;
@@ -20,20 +33,30 @@ int	ft_print_string(char *str, t_flags flags)
 	int		len;
 
 	i = 0;
-	if (!str && flags.precision < 6 && flags.precision > -1)
-		str = "";
-	else if (!str)
+	if (!str)
 		str = "(null)";
 	len = ft_strlen(str);
-	if (flags.precision == -1)
-		flags.precision = len;
-	if (flags.precision > len)
+	if (flags.width == 0 && flags.precision == -1)
+		flags.width = ft_strlen(str);
+	if (flags.zero && flags.precision != -1 && flags.width)
+		flags.precision = flags.width;
+	else if (flags.precision == -1 || flags.precision > len)
 		flags.precision = len;
 	if (flags.minus == 1)
-		write(1, str, flags.precision);
-	while (i < flags.width - flags.precision)
-		i += ft_putnchar(' ', 1);
+		i += ft_print_with_0(str, flags);
+	i += ft_putnchar(' ', flags.width - flags.precision);
 	if (flags.minus == 0)
-		write(1, str, flags.precision);
-	return (flags.precision + i);
+		i += ft_print_with_0(str, flags);
+	return (i);
+}
+
+int ft_print_percent(char *str, t_flags flags)
+{
+	int	i;
+
+	i = 0;
+	if (flags.precision == 0)
+		flags.precision = -1;
+	i += ft_print_string(str, flags);
+	return (i);
 }

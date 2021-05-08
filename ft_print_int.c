@@ -40,7 +40,7 @@ int	ft_print_unsigned(unsigned int unbr, t_flags flags)
 	if (flags.minus == 0)
 		i += print_str(str, flags);
 	free(str);
-	return (len + i);
+	return (i);
 }
 
 int	ft_print_int(int nbr, t_flags flags)

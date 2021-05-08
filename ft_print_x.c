@@ -7,16 +7,6 @@ int	ft_max(int a, int b)
 	return (b);
 }
 
-int	ft_print_with_0(char *str, t_flags flags)
-{
-	int	i;
-
-	i = 0;
-	i += ft_putnchar('0', flags.precision - (int)ft_strlen(str));
-	i += write(1, str, ft_strlen(str));
-	return (i);
-}
-
 int	ft_print_x(unsigned int unbr, int is_lower, t_flags flags)
 {
 	char	*str;
